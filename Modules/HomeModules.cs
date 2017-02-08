@@ -9,19 +9,29 @@ namespace Places
   {
     public HomeModule()
     {
-        Get["/all_places"] = _ => {
-          List<string> cityNames = Place.GetAll();
-          return View["all_places.cshtml", cityNames];
+
+        Get["/"] = _ => {
+          return View["index.cshtml"];
         };
-        Get["/"] = _ => View["index.cshtml"];
-        Post["/place_created"] = _ => {
+
+        Get["/allPlaces"] = _ => {
+          List<Place> allPlaces = Place.GetAll();
+          return View["all_places.cshtml", allPlaces];
+        };
+
+        Get["/place/new"] = _ => {
+          return View["place_form.cshtml"];
+        };
+
+        Post["/allPlaces"] = _ => {
           Place newPlace = new Place(Request.Form["new-city"]);
-          newPlace.Save();
-          return View["place_created.cshtml", newPlace];
+          List<Place> allPlaces = Place.GetAll();
+          return View["all_places.cshtml", allPlaces];
         };
-        Get["/place_cleared"] = _ => {
-          Place.ClearAll();
-          return View["place_cleared.cshtml"];
+
+        Get["/allPlaces/{id}"] = parameters => {
+          Place place = Place.Find(parameters.id);
+          return View["/place.cshtml", place];
         };
     }
   }

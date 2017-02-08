@@ -1,0 +1,19 @@
+@{
+  Layout="Shared/_Layout.cshtml";
+}
+
+<h1>Places We've been</h1>
+<form action="/allPlaces" method="post">
+  <label for="new-city">Add a new city:</label>
+  <input type="text" name="new-city">
+  <button type="submit">Submit</button>
+</form>
+
+@* <h1>You just created: </h1>
+
+<ul>
+  <li>@Model.getCity()</li>
+</ul>
+
+<h3><a href="/">Add another city</a></h3>
+<h3><a href="/all_places">See List</a></h3> *@

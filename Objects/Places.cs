@@ -6,35 +6,41 @@ namespace Places.Objects
   public class Place
   {
     private string _city;
-    private static List<string> _cityList = new List<string>();
+    private static List<Place> _cityList = new List<Place>();
+    private int _id;
 
     public Place (string city)
     {
       _city = city;
+      _cityList.Add(this);
+      _id = _cityList.Count;
     }
 
-    public void setCity(string cityName)
+    public void SetCity(string cityName)
     {
       _city = cityName;
     }
 
-    public string getCity()
+    public string GetCity()
     {
       return _city;
     }
 
-    public static List<string> GetAll()
+    public static List<Place> GetAll()
     {
       return _cityList;
     }
-    public void Save()
-    {
-      _cityList.Add(_city);
-    }
-
     public static void ClearAll()
     {
       _cityList.Clear();
+    }
+    public int GetId()
+    {
+      return _id;
+    }
+    public static Place Find(int searchId)
+    {
+      return _cityList[searchId-1];
     }
 
   }

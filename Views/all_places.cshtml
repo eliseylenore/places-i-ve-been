@@ -4,10 +4,9 @@
 
 <h1>List of All the Places I've Been</h1>
 <ul>
-  @foreach (string city in Model)
+  @foreach (var city in Model)
   {
-    <li>@city</li>
+    <li><a href='/place/new@city.GetId()'>@city.GetCity()</a></li>
   }
 </ul>
-<h3><a href="/">Add another city</a></h3>
-<h3><a href="/place_cleared">Clear List</a></h3>
+<h3><a href="/place/new">Add another city</a></h3>
