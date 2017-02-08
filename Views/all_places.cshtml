@@ -2,9 +2,11 @@
   Layout="Shared/_Layout.cshtml";
 }
 
+<h1>List of All the Places I've Been</h1>
 <ul>
   @foreach (string city in Model)
   {
     <li>@city</li>
   }
 </ul>
+<h3><a href="/">Add another city</a></h3>

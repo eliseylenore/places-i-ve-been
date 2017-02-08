@@ -9,10 +9,10 @@ namespace Places
   {
     public HomeModule()
     {
-      Get["/all_places"] = _ => {
-        List<string> cityNames = Place.GetAll();
-        View["all_places.cshtml", cityNames];
-      };
+        Get["/all_places"] = _ => {
+          List<string> cityNames = Place.GetAll();
+          return View["all_places.cshtml", cityNames];
+        };
         Get["/"] = _ => View["index.cshtml"];
         Post["/place_created"] = _ => {
           Place newPlace = new Place(Request.Form["new-city"]);
