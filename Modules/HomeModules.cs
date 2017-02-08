@@ -19,7 +19,10 @@ namespace Places
           newPlace.Save();
           return View["place_created.cshtml", newPlace];
         };
-
+        Get["/place_cleared"] = _ => {
+          Place.ClearAll();
+          return View["place_cleared.cshtml"];
+        };
     }
   }
 }

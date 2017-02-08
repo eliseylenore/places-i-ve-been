@@ -32,5 +32,10 @@ namespace Places.Objects
       _cityList.Add(_city);
     }
 
+    public static void ClearAll()
+    {
+      _cityList.Clear();
+    }
+
   }
 }
