@@ -9,7 +9,11 @@ namespace Places
   {
     public HomeModule()
     {
-      Get["/"] = _ => View["index.cshtml"];
+        Get["/"] = _ => View["index.cshtml"];
+        Post["/place_created"] = _ => {
+          Place newPlace = new Place(Request.Form["new-city"]);
+          return View["place_created.cshtml", newPlace];
+        };
     }
   }
 }
