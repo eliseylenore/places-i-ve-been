@@ -31,7 +31,7 @@ namespace Places
 
         Get["/allPlaces/{id}"] = parameters => {
           Place place = Place.Find(parameters.id);
-          return View["/place.cshtml", place];
+          return View["place.cshtml", place];
         };
     }
   }

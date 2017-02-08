@@ -6,7 +6,7 @@
 <ul>
   @foreach (var city in Model)
   {
-    <li><a href='/place/new@city.GetId()'>@city.GetCity()</a></li>
+    <li><a href='/allPlaces/@city.GetId()'>@city.GetCity()</a></li>
   }
 </ul>
 <h3><a href="/place/new">Add another city</a></h3>
