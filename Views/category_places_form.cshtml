@@ -1,0 +1,11 @@
+@{
+  Layout="Shared/_Layout.cshtml";
+}
+
+<h1>Add a new city to @Model["category"].GetName()</h1>
+<form action="index.html" method="post">
+  <input id='category-id' type="hidden" name="category-id" value='@Model["category"].GetId()'>
+  <label for="task-description">Task description</label>
+  <input type="text" name="task-description" name="task-description">
+  <button type="submit">Add task</button>
+</form>

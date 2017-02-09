@@ -1,0 +1,13 @@
+@{
+  Layout="Shared/_Layout.cshtml";
+}
+
+<h3>Here are all the places in this category: </h3>
+  <ol>
+    @foreach (var place in @Model["tasks"])
+    {
+      <li>@task.GetDescription()</li>
+    }
+  </ol>
+<p><a href="/categories/@Model["category"].GetID()/tasks/new">Add a new task</a></p>
+<p><a href='/'>Return to Main Page</a></p>

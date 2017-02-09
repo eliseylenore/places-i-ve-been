@@ -14,24 +14,44 @@ namespace Places
           return View["index.cshtml"];
         };
 
-        Get["/allPlaces"] = _ => {
-          List<Place> allPlaces = Place.GetAll();
-          return View["all_places.cshtml", allPlaces];
+        Get["/categories"] = _ => {
+          var allCategories = Category.GetAll();
+          return View["categories.cshtml", allCategories];
         };
-
-        Get["/place/new"] = _ => {
-          return View["place_form.cshtml"];
+        Get["/categories/new"] = _ => {
+          return View["category_form.cshtml"];
         };
-
-        Post["/allPlaces"] = _ => {
-          Place newPlace = new Place(Request.Form["new-city"]);
-          List<Place> allPlaces = Place.GetAll();
-          return View["all_places.cshtml", allPlaces];
+        Post["/categories"] = _ => {
+          var newCategory = new Category(Request.Form["category-name"]);
+          var all Categories = Category.GetAll();
+          return View["categories.cshtml", allCategories];
         };
-
-        Get["/allPlaces/{id}"] = parameters => {
-          Place place = Place.Find(parameters.id);
-          return View["place.cshtml", place];
+        Get["/categories/{id}"] = parameters => {
+          Dictionary<string, object> model = new Dictionary<string, object>();
+          var selectedCategory = Category.Find(parameters.id);
+          var categoryPlaces = selectedCategory.GetPlaces();
+          model.Add("category", selectedCategory);
+          model.Add("tasks", categoryPlaces);
+          return View["category.cshtml", model];
+        };
+        Get["/categories/{id}/tasks/new"] = parameters => {
+          Dictionary<string, object> model = new Dictionary<string, object>();
+          Category selectedCategory = Category.Find(parameters.id);
+          List<Place> allPlaces = selectedCategory.GetPlaces();
+          model.Add("category", selectedCategory);
+          model.Add("tasks", allTasks);
+          return View["category_tasks_form.cshtml", model];
+        };
+        Post["/places"] = _ => {
+          Dictionary<string, object> model = new Dictionary<string>, object();
+          Category selectedCategory = Category.Find(Request.Form["category-id"]);
+          List<Task> categoryTasks = selectedCategory.GetPlaces();
+          string city = Request.Form["place.chshtml"];
+          Place newPlace = new Place(place);
+          categoryPlaces.Add(newPlace);
+          model.Add("places", places);
+          model.Add("category", selectedCategory);
+          return View["category.cshtml", model];
         };
     }
   }
